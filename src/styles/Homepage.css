@@ -1,0 +1,9 @@
+.homepage-root {
+  padding-top: 100px;
+}
+
+.homepage-form {
+  display: flex !important;
+  align-content: center;
+  justify-content: center;
+}
