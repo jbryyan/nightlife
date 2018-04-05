@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Header, Image, Icon, Sidebar, Input } from 'semantic-ui-react';
+import { Menu, Header, Image, Icon, Sidebar, Input, Container} from 'semantic-ui-react';
 import { Link, withRouter } from 'react-router-dom';
 import martini from '../images/martini.jpg';
 
@@ -18,11 +18,10 @@ class SmallNavbar extends Component {
     return (
         <div>
           <Menu fixed='top' borderless inverted pointing >
-            
-            <Menu.Item>
+          <Container>
+            <Menu.Item as={Link} to='/'>
               <Icon name='cocktail' size='large' color='purple' />
             </Menu.Item>
-            
             <Menu.Menu position='right'>
               <Menu.Item onClick={() => this.props.sidebar(!this.props.active)} >
                 <Icon
@@ -34,7 +33,7 @@ class SmallNavbar extends Component {
                 />
               </Menu.Item>
             </Menu.Menu>
-            
+            </Container>
           </Menu>
         </div>
         

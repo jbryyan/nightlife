@@ -1,9 +1,18 @@
 .homepage-root {
-  padding-top: 100px;
+  display: flex;
+  height: 80vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.homepage-form {
-  display: flex !important;
-  align-content: center;
-  justify-content: center;
+.homepage-content {
+  margin-bottom: 20px;
 }
+
+.homepage-root p {
+  color: white;
+  font-size: 18px;
+  margin: 0;
+}
+

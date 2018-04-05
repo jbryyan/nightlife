@@ -8,10 +8,11 @@ class NormalNavbar extends Component {
   state= { activeItem: 'home' }
 
   render() {
-
+    const { loggedIn, user } = this.props;
+    
     return (
-      <Menu borderless inverted pointing vertical={true} fixed='left' >
-        <Menu.Item>
+      <Menu borderless inverted secondary pointing vertical={true} fixed='left' >
+        <Menu.Item as={Link} to='/'>
           <Image size='small' circular src={martini}/>
         </Menu.Item>
         <Menu.Item>
@@ -20,10 +21,18 @@ class NormalNavbar extends Component {
           GitHub Repository
           <Divider/>
         </Menu.Item>
-        <Menu.Item>Bars & Clubs</Menu.Item>
+        <Menu.Item as={Link} to='/search'>Bars & Clubs</Menu.Item>
         <Menu.Item>About</Menu.Item>
-        <Menu.Item>Log In</Menu.Item>
-        <Menu.Item>Sign Up</Menu.Item>
+        { loggedIn ? 
+          <Menu.Item as={Link} to={`/${user}`}>My Activities</Menu.Item>
+          :
+          <Menu.Item as={Link} to='/login'>Log In</Menu.Item>
+        }
+        { loggedIn ? 
+          <Menu.Item as={Link} to='/'>Logout</Menu.Item>
+          :
+          <Menu.Item as={Link} to='/register'>Sign Up</Menu.Item>
+        }
       </Menu>
     );
   }

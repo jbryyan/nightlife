@@ -1,0 +1,22 @@
+.register-root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.register-root .ui.form {
+  width: 20%;
+}
+
+@media (max-width: 1025px) {
+  .register-root .ui.form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-root .ui.form {
+    width: 80%;
+  }
+}

@@ -9,6 +9,9 @@ const config = require('./config/main');
 const mongoose = require('mongoose');
 const register = require('./controllers/register');
 const login = require('./controllers/login');
+const yelp = require('./controllers/yelp');
+const authtoken = require('./controllers/auth');
+const rsvp = require('./controllers/rsvp');
 const expressjwt = require('express-jwt');
 
 // Setup logger
@@ -32,7 +35,14 @@ app.post('/api/register', register);
 // Login user with user credentials
 app.post('/api/login', login);
 
+// Yelp api fetch request
+app.get('/api/yelp', yelp);
 
+// Authenticate user token
+app.get('/api/auth', auth, authtoken);
+
+// Add bar to user list rsvp
+app.put('/api/rsvp', auth, rsvp);
 
 // Return error if not authorized
 app.use(function(err, req, res, next){

@@ -13,13 +13,13 @@ module.exports = function(req, res){
       res.status(401).json({ message: 'Username or password incorrect' });
     } else {
       // Check that the passwords match
-      user.comparePassword(req.body.password, function(err, isMatch){
+      user.comparePassword(req.body.pwd, function(err, isMatch){
         console.log(isMatch);
         if (isMatch && !err) {
           //Create token
           let token = jwt.sign(
             //JSON.parse(JSON.stringify(user)), 
-            req.body.username,
+            { username: req.body.username },
             config.secret, 
             { expiresIn: '1h' }
           );

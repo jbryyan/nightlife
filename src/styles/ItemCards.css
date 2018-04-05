@@ -1,0 +1,29 @@
+.card-extra .ui.card > .extra, .ui.cards > .card > .extra{
+  color: white;
+}
+
+.cards-root-card .ui.card, .ui.cards > .card {
+  background: rgba(27, 28, 29, 0.9);
+  box-shadow: none !important;
+  border: 1px solid violet;
+  color: white !important;
+}
+
+.header {
+  color: white !important;
+}
+
+.card-meta {
+  color: white !important;
+}
+
+.card-image-container {
+  height: 191.8px;
+  width: 288px;
+  overflow: hidden;
+}
+
+.card-image {
+  height: 100%;
+  width: 100%;
+}

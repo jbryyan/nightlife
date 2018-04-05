@@ -1,0 +1,11 @@
+.app-root {
+  display: grid;
+  grid-template: 1fr / 208px 1fr;
+}
+
+@media (max-width: 1025px) {
+  .app-root {
+    display: grid;
+    grid-template: 65px 1fr / 1fr;
+  }
+}

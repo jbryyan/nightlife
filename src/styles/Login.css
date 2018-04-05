@@ -1,0 +1,22 @@
+.login-root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.login-root .ui.form {
+  width: 20%;
+}
+
+@media (max-width: 1025px) {
+  .login-root .ui.form {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-root .ui.form {
+    width: 80%;
+  }
+}
