@@ -10,14 +10,17 @@ import Register from './containers/Register';
 import Bg from './components/Bg';
 import SideBar from './components/SideBar';
 import MyActivities from './containers/MyActivities';
-import { user_logout } from './actions/index';
+import About from './containers/About';
+
+import { user_logout, active_sidebar } from './actions/index';
+
 
 import './styles/Approot.css';
 
 class App extends Component {
   
   render() {
-    const { user, user_logout } = this.props;
+    const { user, user_logout, active_sidebar } = this.props;
 
     return (
       <Router basename='/night-app'>
@@ -25,11 +28,12 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path='/' component={Homepage} />
+            <Route path='/about' component={About} />
             <Route path='/search' component={Search} />
             <Route path='/login' component={Login} />
             <Route path='/register' component={Register} />
             <Route path='/:user' 
-              render={() => user.loggedIn ? <MyActivities /> : <Redirect to='/'/> }/>
+              component={MyActivities}/>
             <Route component={Page404} />
           </Switch>
           <Bg />
@@ -37,6 +41,7 @@ class App extends Component {
             active={user.sidebar} 
             loggedIn={user.loggedIn} 
             logout={user_logout}
+            toggle={active_sidebar}
           />
         </div>      
       </Router>
@@ -50,4 +55,4 @@ const mapStateToProps = (state) => {
   });
 }
 
-export default connect(mapStateToProps, { user_logout })(App);
+export default connect(mapStateToProps, { user_logout, active_sidebar })(App);

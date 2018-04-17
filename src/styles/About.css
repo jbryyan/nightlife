@@ -1,0 +1,19 @@
+.about-root{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+}
+
+.about-segment{
+  padding: 0px 40px 0px 20px !important;
+}
+
+.about-segment p {
+  text-align: center;
+}
+
+.about-me{
+  color: white !important;
+  
+}

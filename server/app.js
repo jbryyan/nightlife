@@ -12,6 +12,7 @@ const login = require('./controllers/login');
 const yelp = require('./controllers/yelp');
 const authtoken = require('./controllers/auth');
 const rsvp = require('./controllers/rsvp');
+const rsvpCancel = require('./controllers/rsvpCancel');
 const expressjwt = require('express-jwt');
 
 // Setup logger
@@ -43,6 +44,9 @@ app.get('/api/auth', auth, authtoken);
 
 // Add bar to user list rsvp
 app.put('/api/rsvp', auth, rsvp);
+
+// Cancel rsvp
+app.delete('/api/rsvpCancel', auth, rsvpCancel);
 
 // Return error if not authorized
 app.use(function(err, req, res, next){

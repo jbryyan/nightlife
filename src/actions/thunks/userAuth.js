@@ -14,7 +14,8 @@ const userAuth = () => (dispatch) => {
           username: res.body.username,
           loggedIn: true, 
           loginPage: true,
-          redirect: '/search'
+          redirect: '/search',
+          activities: res.body.activities.reverse()
         })
       );
     }

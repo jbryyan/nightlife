@@ -1,6 +1,6 @@
 import { 
   USER_AUTH, USER_LOGIN, USER_LOGOUT, IS_LOADING,
-  ACTIVE_SIDEBAR, USER_ERROR
+  ACTIVE_SIDEBAR, USER_ERROR, IS_GOING, ADD_ACTIVITY
 } from '../actions/action-types';
 
 const initialState = {
@@ -10,7 +10,8 @@ const initialState = {
   loading: false,
   sidebar: false,
   redirect: null,
-  error: null
+  error: null,
+  activities: null
 };
 
 export default function(state = initialState, action) {
@@ -21,7 +22,8 @@ export default function(state = initialState, action) {
         username: payload.username, 
         loggedIn: payload.loggedIn, 
         loginPage: payload.loginPage,
-        redirect: payload.redirect
+        redirect: payload.redirect,
+        activities: payload.activities
       };
     case USER_AUTH:
       return {...state, username: action.payload.username};
@@ -29,6 +31,8 @@ export default function(state = initialState, action) {
       return initialState;
     case IS_LOADING:
       return {...state, loading: action.payload };
+    case ADD_ACTIVITY:
+      return {...state, activities: action.payload.activities };
     case ACTIVE_SIDEBAR:
       return {...state, sidebar: action.payload };
     case USER_ERROR:

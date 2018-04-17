@@ -7,7 +7,8 @@ import {
   USER_LOGIN,
   USER_LOGOUT,
   USER_REGISTER,
-  USER_ERROR
+  USER_ERROR,
+  ADD_ACTIVITY
 } from './action-types';
 
 export const active_sidebar = (action) => {
@@ -23,6 +24,13 @@ export const item_search = (action) => {
     payload: action
   };
 };
+
+export const add_activity = (action) => {
+  return {
+    type: ADD_ACTIVITY,
+    payload: action
+  };
+}
 
 export const is_loading = (action) => {
   return {

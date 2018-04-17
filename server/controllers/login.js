@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Activities = require('../models/activities');
 const jwt = require('jsonwebtoken');
 const config = require('../config/main');
 
@@ -23,8 +24,13 @@ module.exports = function(req, res){
             config.secret, 
             { expiresIn: '1h' }
           );
-          res.setHeader('Authorization', 'Bearer ' + token);
-          res.status(200).json({ username: req.body.username });
+          Activities.findOne({ username: req.body.username }, function(err, doc){
+            if (err) console.log(err);
+            
+            res.setHeader('Authorization', 'Bearer ' + token);
+            res.status(200).json({ username: req.body.username, myActivities: doc.myActivities });
+          });
+
         } else {
           res.status(401).json({ message: 'Username or password incorrect' });
         }

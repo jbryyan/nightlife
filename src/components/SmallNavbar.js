@@ -28,7 +28,7 @@ class SmallNavbar extends Component {
                   size='large' 
                   name='bars' 
                   circular 
-                  color='violet' 
+                  color='violet'
                   inverted
                 />
               </Menu.Item>

@@ -8,11 +8,19 @@ module.exports = function(req, res){
   const data = { 
     name: req.body.name,
     location: req.body.location.city,
-    phone: req.body.phone, 
+    phone: req.body.phone,
+    image: req.body.image_url 
   };
   var date = new Date();
   var todaysDate = (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();
 
+  const midnight = new Date(
+    date.getFullYear(),
+    date.getMonth(),
+    date.getDate() + 1, 0, 0, 0
+  );
+  let Time = date;
+  
   Activities.findOne(
     { username: username }, 
     function(err, doc){
@@ -20,16 +28,19 @@ module.exports = function(req, res){
       res.status(400).json({ success: false });
       console.log(err);
     }
+
     let bars = [];
     bars.push(data);
     console.log(doc);
     if(doc.myActivities.length === 0){
       console.log('Pushing data to empty array');
       doc.myActivities.push({ date: todaysDate, bars: bars });
+    
       Bars.findOne({ bar: data.name }, function(err, barDoc){
         if(err) console.log(err);
         console.log(barDoc);
         if(!barDoc){
+          
           let newBar = new Bars({ bar: data.name, people_attending: 1 });
           newBar.save();
         }else{
@@ -50,6 +61,8 @@ module.exports = function(req, res){
         // Check bars array to see if bar exists
         if(barIndex !== -1){
           console.log('Bar already added');
+          res.status(400).json({ success: false });
+          return;
         }else{
           console.log('Bar has been added');
           const index = doc.myActivities.findIndex(item => item.date === todaysDate);
@@ -90,7 +103,8 @@ module.exports = function(req, res){
         res.status(400).json({ success: false });
         console.log(err);
       }
-      res.status(200).json({ success: true })
+      console.log(doc);
+      res.status(200).json({ success: true, activities: doc.myActivities.reverse() });
     })
   });
 

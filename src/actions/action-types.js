@@ -9,5 +9,7 @@ export const ITEM_SEARCH = 'item_search';
 export const ITEM_SORT = 'item_sort';
 export const USER_ERROR = 'user_error';
 export const IS_GOING = 'is_going';
+export const CANCEL_GOING = 'cancel_going';
+export const ADD_ACTIVITY = 'add_activity';
 
 export const ROOT_URL = 'http://192.168.223.128:7000';

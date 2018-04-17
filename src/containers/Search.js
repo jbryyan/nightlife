@@ -7,6 +7,7 @@ import ItemCards from '../components/ItemCards';
 import itemSearch from '../actions/thunks/itemSearch';
 import itemSort from '../actions/thunks/itemSort';
 import userRsvp from '../actions/thunks/userRsvp';
+import userCancel from '../actions/thunks/userCancel';
 
 class Search extends Component {
 
@@ -21,6 +22,10 @@ class Search extends Component {
   userRsvp = (item, key) => {
     console.log('User rsvp');
     this.props.userRsvp(item, key);
+  }
+
+  userCancel = (item, key) => {
+    this.props.userCancel(item, key);
   }
 
   render() {
@@ -39,6 +44,7 @@ class Search extends Component {
             loggedIn={user.loggedIn}
             goToLogin={this.goToLogin}
             userRsvp={this.userRsvp}
+            userCancel={this.userCancel}
             loading={user.loading}
           />
         }
@@ -54,4 +60,4 @@ const mapStateToProps = (state) => {
   });
 }
 
-export default connect(mapStateToProps, { itemSearch, itemSort, userRsvp })(Search);
+export default connect(mapStateToProps, { itemSearch, itemSort, userRsvp, userCancel })(Search);

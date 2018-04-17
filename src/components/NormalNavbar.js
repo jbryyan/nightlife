@@ -22,7 +22,7 @@ class NormalNavbar extends Component {
           <Divider/>
         </Menu.Item>
         <Menu.Item as={Link} to='/search'>Bars & Clubs</Menu.Item>
-        <Menu.Item>About</Menu.Item>
+        <Menu.Item as={Link} to='/about'>About</Menu.Item>
         { loggedIn ? 
           <Menu.Item as={Link} to={`/${user}`}>My Activities</Menu.Item>
           :

@@ -17,7 +17,7 @@ class ItemCards extends Component {
   render() {
     const imageLink = 'https://s3-media2.fl.yelpcdn.com/bphoto/4idfbOrmGGVZ0oeedVkg5g/o.jpg';
     const arr = [1, 2, 3, 4, 5, 6, 7, 8];
-    const { items, goToLogin, loggedIn, userRsvp, loading } = this.props;
+    const { items, goToLogin, loggedIn, userRsvp, userCancel, loading } = this.props;
 
     return (
       <div className="cards-root">
@@ -44,9 +44,14 @@ class ItemCards extends Component {
                   value={items[key].price ? items[key].price : '?' }
                 />
                 <Statistic 
+                  inverted label='Going' 
+                  size='mini'
+                  value={items[key].totalgoing}  
+                />
+                <Statistic 
                   inverted label='Distance' 
                   size='mini'
-                  value={items[key].distance ? `${Math.round(items[key].distance)}m` : '?' }  
+                  value={items[key].distance ? `${Math.round(items[key].distance)}m` : '?'}  
                 />
               </Card.Description>
             </Card.Content>
@@ -56,7 +61,9 @@ class ItemCards extends Component {
                 textAlign='center' 
                 extra
               >
-                <Button inverted={!items[key].going} color='violet' fluid onClick={() => userRsvp(items[key], key)}>
+                <Button inverted={!items[key].going} color='violet' fluid 
+                  onClick={() => items[key].going ? userCancel(items[key], key) : userRsvp(items[key], key)}
+                >
                   <Icon color={items[key].going ? 'red':'violet' } name='heart'/>
                   {items[key].going ? 'Click to cancel' : 'Click to go!'}
                 </Button>

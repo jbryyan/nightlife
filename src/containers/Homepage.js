@@ -17,7 +17,7 @@ class Homepage extends Component {
     return (
       <div className="homepage-root">
         <div>
-          <Header size='huge'>Start Your Night Here</Header>
+          <Header size='huge'>Nightlife</Header>
           <div className='homepage-content'>
             <p>Find bars & clubs near you</p>
             <p>Start by searching your area</p>

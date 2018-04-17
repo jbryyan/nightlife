@@ -1,7 +1,8 @@
 import { 
   ITEM_SEARCH,
   ITEM_SORT,
-  IS_GOING
+  IS_GOING,
+  CANCEL_GOING
 } from '../actions/action-types';
 
 const initialState = {
@@ -16,12 +17,14 @@ export default function(state = initialState, action) {
       return {...state, searchItems: action.payload };
     case IS_GOING:
       console.log(action.payload);
-      const key = action.payload.key;
-      const going = action.payload.going;
-      const add = action.payload.add;
       let newState = {...state};
-      newState.searchItems[key].going = going;
+      newState.searchItems[action.payload.key].going = action.payload.going;
+      newState.searchItems[action.payload.key].totalgoing += action.payload.add;
       return newState;
+    case CANCEL_GOING:
+      
+      
+      return state;
     default: 
       return state;
   }

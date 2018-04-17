@@ -13,6 +13,7 @@ class Navbar extends Component {
   state= { activeItem: 'home' }
 
   componentWillMount(){
+    console.log('component will mount');
     this.props.userAuth();
   }
 
