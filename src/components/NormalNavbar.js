@@ -8,7 +8,7 @@ class NormalNavbar extends Component {
   state= { activeItem: 'home' }
 
   render() {
-    const { loggedIn, user } = this.props;
+    const { loggedIn, user, logout } = this.props;
     
     return (
       <Menu borderless inverted secondary pointing vertical={true} fixed='left' >
@@ -18,7 +18,7 @@ class NormalNavbar extends Component {
         <Menu.Item>
           Created by Bryan Juarez
           <Divider/>
-          GitHub Repository
+          <a href='https://github.com/jbryyan' target='_blank'>GitHub Repository</a>
           <Divider/>
         </Menu.Item>
         <Menu.Item as={Link} to='/search'>Bars & Clubs</Menu.Item>
@@ -29,7 +29,7 @@ class NormalNavbar extends Component {
           <Menu.Item as={Link} to='/login'>Log In</Menu.Item>
         }
         { loggedIn ? 
-          <Menu.Item as={Link} to='/'>Logout</Menu.Item>
+          <Menu.Item as={Link} to='/' onClick={() => logout()}>Logout</Menu.Item>
           :
           <Menu.Item as={Link} to='/register'>Sign Up</Menu.Item>
         }

@@ -12,4 +12,5 @@ export const IS_GOING = 'is_going';
 export const CANCEL_GOING = 'cancel_going';
 export const ADD_ACTIVITY = 'add_activity';
 
-export const ROOT_URL = 'http://192.168.223.128:7000';
+//export const ROOT_URL = 'http://192.168.223.128:7000';
+export const ROOT_URL = 'https://redux-nightlife.glitch.me';

@@ -23,7 +23,7 @@ class App extends Component {
     const { user, user_logout, active_sidebar } = this.props;
 
     return (
-      <Router basename='/night-app'>
+      <Router basename='/nightlife'>
         <div className='app-root'>
           <Navbar />
           <Switch>

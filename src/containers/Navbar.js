@@ -6,7 +6,7 @@ import martini from '../images/martini.jpg';
 import NormalNavbar from '../components/NormalNavbar';
 import SmallNavbar from '../components/SmallNavbar';
 import userAuth from '../actions/thunks/userAuth';
-import { active_sidebar } from '../actions/index';
+import { active_sidebar, user_logout } from '../actions/index';
 
 class Navbar extends Component {
 
@@ -19,7 +19,7 @@ class Navbar extends Component {
 
   render() {
     const activeItem = this.props.location.pathname;
-    const { user, active_sidebar } = this.props;
+    const { user, active_sidebar, user_logout } = this.props;
     
     return (
       <div className="navbar-root">
@@ -27,6 +27,7 @@ class Navbar extends Component {
           <NormalNavbar 
             loggedIn={user.loggedIn} 
             user={user.username}
+            logout={user_logout}
           />
         </Responsive>
         <Responsive maxWidth={Responsive.onlyTablet.maxWidth}>
@@ -47,4 +48,4 @@ const mapStateToProps = (state) => {
   });
 };
 
-export default withRouter( connect(mapStateToProps, { active_sidebar, userAuth })(Navbar));
+export default withRouter( connect(mapStateToProps, { user_logout, active_sidebar, userAuth })(Navbar));
